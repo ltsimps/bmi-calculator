@@ -8,6 +8,7 @@ const bottomContainerColor = Color(0xFFEB1555);
 
 
 
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -28,27 +29,25 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(cardColor: activeContainerColor,
-                  cardChild: Column (
-                    children: <Widget>[
-                      Icon(
-                          FontAwesomeIcons.mars,
-                          size: 75.0,
-                      ),
-                      SizedBox(
-                        height: 15.0,
-                      ),
-                      Text('Male', style:  TextStyle(
-                        fontSize: 18.0,
-                        color: Color(0xFF8D8E98),
-
-                      ),)
-                    ],
-                  ),
+                  cardChild: BMICard( Icon(
+                      FontAwesomeIcons.mars,
+                      size: 75.0,
+                     ), 'Male'),
                   ),
 
                 ),
                 Expanded(
-                  child: ReusableCard(cardColor: activeContainerColor),
+                  child: ReusableCard(cardColor: activeContainerColor, cardChild:BMICard(
+                    Icon(
+                      FontAwesomeIcons.venus,
+                      size: 75.0,
+                    ), 'Female'
+
+
+                  ),
+
+                  ),
+
                 ),
 
             ]),
@@ -87,6 +86,30 @@ class _InputPageState extends State<InputPage> {
         ],
 
       ),
+    );
+  }
+}
+
+class BMICard extends StatelessWidget {
+  final Icon cardIcon;
+  final cardText;
+  const BMICard( this.cardIcon, this.cardText);
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Column (
+      children: <Widget>[
+        cardIcon,
+        SizedBox(
+          height: 15.0,
+        ),
+        Text( cardText, style:  TextStyle(
+          fontSize: 18.0,
+          color: Color(0xFF8D8E98),
+
+        ),),
+      ],
     );
   }
 }
